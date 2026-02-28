@@ -3,7 +3,7 @@ import Contact from "../models/contact-model.js";
 /* -------------------------------------------------------------------------- */
 /*                    To Aquire all users in admin dashbord                   */
 /* -------------------------------------------------------------------------- */
-const getAllUsers = async (req, res) =>{
+const getAllUsers = async (req, res, next) =>{
      try {
           const usrData = await UserData.find({}, {password: 0})
           if(!usrData || usrData.length === 0){
@@ -19,7 +19,7 @@ const getAllUsers = async (req, res) =>{
 /* -------------------------------------------------------------------------- */
 /*                             To get all Contacts                            */
 /* -------------------------------------------------------------------------- */
-const getAllContacts = async (req, res) =>{
+const getAllContacts = async (req, res, next) =>{
      try {
           const contactData = await Contact.find()
           if(!contactData){
@@ -35,7 +35,7 @@ const getAllContacts = async (req, res) =>{
 /* -------------------------------------------------------------------------- */
 /*                              Delete user logic                             */
 /* -------------------------------------------------------------------------- */
-const deleteUser = async (req, res) =>{
+const deleteUser = async (req, res, next) =>{
      try {
           const id = req.params.id
           await UserData.deleteOne({_id : id})
@@ -48,7 +48,7 @@ const deleteUser = async (req, res) =>{
 /*                            To Edit selected user                           */
 /* -------------------------------------------------------------------------- */
 
-const getUserById = async (req, res) =>{
+const getUserById = async (req, res, next) =>{
       try {
           const id = req.params.id
           const data = await UserData.findOne({_id : id}, {password: 0})
@@ -61,7 +61,7 @@ const getUserById = async (req, res) =>{
 /*                    For updating Data by gathering its id                   */
 /* -------------------------------------------------------------------------- */
 
-const getUpdatedDataById = async(req, res) =>{
+const getUpdatedDataById = async(req, res, next) =>{
      try {
           const id = req.params.id
           const updatedUserData = req.body
@@ -78,7 +78,7 @@ const getUpdatedDataById = async(req, res) =>{
 /*                        for deleting Message of user                        */
 /* -------------------------------------------------------------------------- */
 
-const deleteUserMessage = async(req, res) =>{
+const deleteUserMessage = async(req, res, next) =>{
      try {
           const id = req.params.id
           await Contact.deleteOne({_id : id})

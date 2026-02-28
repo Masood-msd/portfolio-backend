@@ -10,7 +10,6 @@ import errorMiddleware from "./server/middlewares/errormiddleware.js";
 
 const app = express();
 const PORT = process.env.PORT;
-//const API = process.env.BACKEND_API
 console.log("uri = ", process.env.MONGODB_URI);
 
 const corsOrigin = {
@@ -18,8 +17,9 @@ const corsOrigin = {
   methods : "GET, POST, PUT, DELETE, PATCH, HEAD",
   credentials: true
 }
-app.use(errorMiddleware)
+
 app.use(cors(corsOrigin))
+app.use(errorMiddleware)
 app.use(express.json());
 app.use("/api/auth", authRouter);
 app.use("/api/form", formRoute);
