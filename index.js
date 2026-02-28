@@ -13,7 +13,7 @@ const PORT = process.env.PORT;
 console.log("uri = ", process.env.MONGODB_URI);
 
 const corsOrigin = {
-  origin: "*",
+  origin: "https://portfolio-frontend-nine-rouge.vercel.app",
   methods : "GET, POST, PUT, DELETE, PATCH, HEAD",
   credentials: true
 }
